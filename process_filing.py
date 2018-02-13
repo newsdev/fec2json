@@ -110,9 +110,9 @@ def get_itemization_type(line_type):
         return "TEXT"
     if line_type.startswith('SA3L'):
         return "SchA3L"
-    if line.startswith('SC1'):
+    if line_type.startswith('SC1'):
         return "SchC1"
-    if line.startswith('SC2'):
+    if line_type.startswith('SC2'):
         return "SchC2"
     return "Sch"+line_type[1]#this is probably going to need to be more complex
 
@@ -123,7 +123,7 @@ def write_file(outpath, content):
 
 start_time = datetime.datetime.now()
 
-filing_dict = process_electronic_filing('test_csvs/1146262.csv')
+filing_dict = process_electronic_filing('test_csvs/1205803.csv')
 write_file('test_csvs/output_test.json', filing_dict)
 
 end_time = datetime.datetime.now()
