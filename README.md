@@ -24,7 +24,8 @@ The json will have the following keys:
 * remaining fields depend on the form type and come from the relevant [fec csv source file](https://github.com/newsdev/fec-csv-sources)
 
 #### from the itemizations
-* itemizations, an object which includes keys for each sked type, of which the values are a list of all itemizations for that sked type.
+* itemizations, an object which includes keys for each sked type
+  * each of those keys points to a list of itemization objects of the relevant type. The keys for those innermost objects are determined by the relevant [fec csv source file](https://github.com/newsdev/fec-csv-sources)
 
 For example, a filing might look like this:
 
