@@ -18,6 +18,7 @@ setup(
     url='https://github.com/newsdev/fec2json',
     description='Python client for turning a FEC filing csv file into JSON.',
     long_description="",
+    packages=['utils'],
     entry_points={
         'console_scripts': (
             'fec2json = process_filing:main',
