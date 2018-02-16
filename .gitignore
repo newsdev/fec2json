@@ -1,1 +1,3 @@
 test_csvs
+*__pycache__
+*.egg-info
