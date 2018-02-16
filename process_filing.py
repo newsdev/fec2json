@@ -1,5 +1,6 @@
 import csv
 import sys
+import os
 import ujson as json
 import datetime
 import argparse
@@ -12,6 +13,8 @@ over and over, we'll cache the ones we've already loaded
 in the FEC_SOURCES global
 """
 FEC_SOURCES = {}
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+CSV_FILE_DIRECTORY = '{}/fec-csv-sources'.format(PROJECT_ROOT)
 
 def process_electronic_filing(path):
     filing_dict = {}
@@ -86,7 +89,7 @@ def get_header_columns(fec_version_number, form_type):
 
     #open the fec source for the relevant form
     try:
-        f = open('fec-csv-sources/{}.csv'.format(form_type), 'r')
+        f = open('{}/{}.csv'.format(CSV_FILE_DIRECTORY, form_type), 'r')
     except FileNotFoundError:
         print('could not find headers for form type {}'.format(form_type))
         raise
