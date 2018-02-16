@@ -74,7 +74,7 @@ def process_summary_row(summary_row, fec_version_number):
 
         return(processed_fields)
 
-def process_itemization_line(line, fec_version_number, filing_id):
+def process_itemization_line(line, fec_version_number):
     #processes a single itemization row
     form_type = get_itemization_type(line[0])
     return process_line(line, fec_version_number, form_type)
