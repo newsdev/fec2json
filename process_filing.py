@@ -158,6 +158,7 @@ def write_file(outpath, content):
     with open(outpath, 'w') as f:
         f.write(json.dumps(content, indent=2))
 
+"""
 start_time = datetime.datetime.now()
 
 filing_dict = process_electronic_filing('test_csvs/1205803.csv')
@@ -166,3 +167,4 @@ write_file('test_csvs/output_test.json', filing_dict)
 end_time = datetime.datetime.now()
 time_diff = end_time-start_time
 print("processing took {} seconds".format(time_diff.seconds))
+"""

@@ -24,16 +24,16 @@ treasurer_prefix,21,TREASURER PREFIX,21,TREASURER PREFIX,,,,
 treasurer_suffix,22,TREASURER SUFFIX,22,TREASURER SUFFIX,,,,
 date_signed,23,DATE SIGNED,23,DATE SIGNED,198,DATE (Signed),198,DATE (Signed)
 col_a_cash_on_hand_beginning_period,24,6.  Cash on Hand Beginning Period,24,6.  Cash on Hand Beginning Period,18,6.  Cash on Hand Beginning Period,18,6.  Cash on Hand Beginning Period
-col_a_total_receipts,25,7.  Total Receipts,25,7.  Total Receipts,19,7.  Total Receipts,19,7.  Total Receipts
-col_a_subtotal,26,8.  Subtotal,26,8.  SubTotal,20,8.  SubTotal,20,8.  SubTotal
-col_a_total_disbursements,27,9.  Total Disbursements,27,9.  Total Disbursements,21,9.  Total Disbursements,21,9.  Total Disbursements
+col_a_total_receipts_summary,25,7.  Total Receipts,25,7.  Total Receipts,19,7.  Total Receipts,19,7.  Total Receipts
+col_a_subtotal_summary,26,8.  Subtotal,26,8.  SubTotal,20,8.  SubTotal,20,8.  SubTotal
+col_a_total_disbursements_summary,27,9.  Total Disbursements,27,9.  Total Disbursements,21,9.  Total Disbursements,21,9.  Total Disbursements
 col_a_cash_on_hand_close_of_period,28,10.  Cash on Hand Close of Period,28,10.  Cash on Hand Close of Period,22,10.  Cash on Hand Close of Period,22,10.  Cash on Hand Close of Period
-col_a_debts_to,29,11.  Debts to,29,11.  Debts to,23,11.  Debts to,23,11.  Debts to
-col_a_debts_by,30,12.  Debts by,30,12.  Debts by,24,12.  Debts by,24,12.  Debts by
-col_a_expenditures_subject_to_limits,31,13.  Expenditures Subject to Limits,31,13.  Expenditures Subject to Limits,25,13.  Expenditures Subject to Limits,25,13.  Expenditures Subject to Limits
-col_a_net_contributions,32,14.  Net Contributions,32,14.  Net Contributions,26,14.  Net Contributions,26,14.  Net Contributions
-col_a_net_operating_expenditures,33,15.  Net Operating Expenditures,33,15.  Net Operating Expenditures,27,15.  Net Operating Expenditures,27,15.  Net Operating Expenditures
-col_a_federal_funds,34,16. Federal Funds,34,16. Federal Funds,28,16. Federal Funds,28,16. Federal Funds
+col_a_debts_to_summary,29,11.  Debts to,29,11.  Debts to,23,11.  Debts to,23,11.  Debts to
+col_a_debts_by_summary,30,12.  Debts by,30,12.  Debts by,24,12.  Debts by,24,12.  Debts by
+col_a_expenditures_subject_to_limits_summary,31,13.  Expenditures Subject to Limits,31,13.  Expenditures Subject to Limits,25,13.  Expenditures Subject to Limits,25,13.  Expenditures Subject to Limits
+col_a_net_contributions_summary,32,14.  Net Contributions,32,14.  Net Contributions,26,14.  Net Contributions,26,14.  Net Contributions
+col_a_net_operating_expenditures_summary,33,15.  Net Operating Expenditures,33,15.  Net Operating Expenditures,27,15.  Net Operating Expenditures,27,15.  Net Operating Expenditures
+col_a_federal_funds_summary,34,16. Federal Funds,34,16. Federal Funds,28,16. Federal Funds,28,16. Federal Funds
 col_a_individuals_itemized,35,17(a.i) Individuals Itemized,,,,,,
 col_a_individuals_unitemized,36,17(a.ii) Individuals Unitemized,,,,,,
 col_a_individual_contribution_total,37,17(a.iii) Individual Contribution Total,35,17(a)  Individuals,29,17(a)  Individuals,29,17(a)  Individuals
@@ -48,7 +48,7 @@ col_a_total_loans,45,19(c) Total Loans,43,19(c) Total Loans,37,19(c) Total Loans
 col_a_operating,46,20(a) Operating,44,20(a) Operating,38,20(a) Operating,38,20(a) Operating
 col_a_fundraising,47,20(b) Fundraising,45,20(b) Fundraising,39,20(b) Fundraising,39,20(b) Fundraising
 col_a_legal_and_accounting,48,20(c) Legal and Accounting,46,20(c) Legal and Accounting,40,20(c) Legal and Accounting,40,20(c) Legal and Accounting
-col_a_total_offset_to_operating_expenditures,49,20(d) Total offsets to Expenditures,47,20(d) Total offsets to Expenditures,41,20(d) Total offsets to Expenditures,41,20(d) Total offsets to Expenditures
+col_a_offsets_to_expenditures,49,20(d) Total offsets to Expenditures,47,20(d) Total offsets to Expenditures,41,20(d) Total offsets to Expenditures,41,20(d) Total offsets to Expenditures
 col_a_other_receipts,50,21. Other Receipts,48,21. Other Receipts,42,21. Other Receipts,42,21. Other Receipts
 col_a_total_receipts,51,22. Total Receipts,49,22. Total Receipts,43,22. Total Receipts,43,22. Total Receipts
 col_a_operating_expenditures,52,23. Operating Expenditures,50,23. Operating Expenditures,44,23. Operating Expenditures,44,23. Operating Expenditures
@@ -58,7 +58,7 @@ col_a_exempt_legal_accounting_disbursement,55,26. Exempt Legal & Accounting Disb
 col_a_made_or_guaranteed_by_candidate,56,27(a) Made or guaranteed by Candidate,54,27(a) Made or guaranteed by Candidate,48,27(a) Made or guaranteed by Candidate,48,27(a) Made or guaranteed by Candidate
 col_a_other_repayments,57,27(b) Other Repayments,55,27(b) Other Repayments,49,27(b) Other Repayments,49,27(b) Other Repayments
 col_a_total_loan_repayments_made,58,27(c) Total Loan Repayments Made,56,27(c) Total Loan Repayments Made,50,27(c) Total Loan Repayments Made,50,27(c) Total Loan Repayments Made
-col_a_individuals,59,28(a) Individuals,57,28(a) Individuals,51,28(a) Individuals,51,28(a) Individuals
+col_a_refunds_to_individuals,59,28(a) Individuals,57,28(a) Individuals,51,28(a) Individuals,51,28(a) Individuals
 col_a_political_party_committees_refunds,60,28(b) Political Party Committees,58,28(b) Political Party Committees,52,28(b) Political Party Committees,52,28(b) Political Party Committees
 col_a_other_political_committees,61,28(c) Other Political Committees,59,28(c) Other Political Committees,53,28(c) Other Political Committees,53,28(c) Other Political Committees
 col_a_total_contributions_refunds,62,28(d) Total Contributions Refunds,60,28(d) Total Contributions Refunds,54,28(d) Total Contributions Refunds,54,28(d) Total Contributions Refunds
@@ -120,7 +120,7 @@ col_a_puerto_rico,117,PUERTO RICO,115,PUERTO RICO,109,PUERTO RICO,109,PUERTO RIC
 col_a_guam,118,GUAM,116,GUAM,110,GUAM,110,GUAM
 col_a_virgin_islands,119,VIRGIN ISLANDS,117,VIRGIN ISLANDS,111,VIRGIN ISLANDS,111,VIRGIN ISLANDS
 col_a_totals,120,TOTALS,118,TOTALS,112,TOTALS,112,TOTALS
-col_b_federal_funds,121,16. Federal Funds,119,16. Federal Funds,113,16. Federal Funds,113,16. Federal Funds
+col_b_federal_funds_summary,121,16. Federal Funds,119,16. Federal Funds,113,16. Federal Funds,113,16. Federal Funds
 col_b_individuals_itemized,122,17(a.i) Individuals Itemized,,,,,,
 col_b_individuals_unitemized,123,17(a.ii) Individuals Unitemized,,,,,,
 col_b_individual_contribution_total,124,17(a.iii) Individual Contribution Total,120,17(a)  Individuals,114,17(a)  Individuals,114,17(a)  Individuals
@@ -135,7 +135,7 @@ col_b_total_loans,132,19(c) Total Loans,128,19(c) Total Loans,122,19(c) Total Lo
 col_b_operating,133,20(a) Operating,129,20(a) Operating,123,20(a) Operating,123,20(a) Operating
 col_b_fundraising,134,20(b) Fundraising,130,20(b) Fundraising,124,20(b) Fundraising,124,20(b) Fundraising
 col_b_legal_and_accounting,135,20(c) Legal and Accounting,131,20(c) Legal and Accounting,125,20(c) Legal and Accounting,125,20(c) Legal and Accounting
-col_b_total_offset_to_operating_expenditures,136,20(d) Total Offsets to Operating Expenditures,132,20(d) Total Offsets to Operating Expenditures,126,20(d) Total Offsets to Operating Expenditures,126,20(d) Total Offsets to Operating Expenditures
+col_b_offsets_to_expenditures,136,20(d) Total Offsets to Operating Expenditures,132,20(d) Total Offsets to Operating Expenditures,126,20(d) Total Offsets to Operating Expenditures,126,20(d) Total Offsets to Operating Expenditures
 col_b_other_receipts,137,21. Other Receipts,133,21. Other Receipts,127,21. Other Receipts,127,21. Other Receipts
 col_b_total_receipts,138,22. Total Receipts,134,22. Total Receipts,128,22. Total Receipts,128,22. Total Receipts
 col_b_operating_expenditures,139,23. Operating Expenditures,135,23. Operating Expenditures,129,23. Operating Expenditures,129,23. Operating Expenditures

@@ -23,12 +23,12 @@ treasurer_prefix,20,TREASURER PREFIX,,,,
 treasurer_suffix,21,TREASURER SUFFIX,,,,
 date_signed,22,DATE SIGNED,107,DATE   (Signed),107,DATE   (Signed)
 col_a_cash_on_hand_beginning_period,23,6(b) Cash on Hand beginning,17,6(b) Cash on Hand beginning,17,6(b) Cash on Hand beginning
-col_a_total_receipts,24,6(c) Total Receipts,18,6(c) Total Receipts,18,6(c) Total Receipts
-col_a_subtotal,25,6(d) Subtotal,19,6(d) Subtotal,19,6(d) Subtotal
-col_a_total_disbursements,26,7. Total Disbursements,20,7. Total Disbursements,20,7. Total Disbursements
+col_a_total_receipts_summary,24,6(c) Total Receipts,18,6(c) Total Receipts,18,6(c) Total Receipts
+col_a_subtotal_summary,25,6(d) Subtotal,19,6(d) Subtotal,19,6(d) Subtotal
+col_a_total_disbursements_summary,26,7. Total Disbursements,20,7. Total Disbursements,20,7. Total Disbursements
 col_a_cash_on_hand_close_of_period,27,8. Cash on Hand at Close,21,8. Cash on Hand at Close,21,8. Cash on Hand at Close
-col_a_debts_to,28,9. Debts to,22,9. Debts to,22,9. Debts to
-col_a_debts_by,29,10. Debts by,23,10. Debts by,23,10. Debts by
+col_a_debts_to_summary,28,9. Debts to,22,9. Debts to,22,9. Debts to
+col_a_debts_by_summary,29,10. Debts by,23,10. Debts by,23,10. Debts by
 col_a_individuals_itemized,30,11(a)i  Itemized,24,11(a)i  Itemized,24,11(a)i  Itemized
 col_a_individuals_unitemized,31,11(a)ii  Unitemized,25,11(a)ii  Unitemized,25,11(a)ii  Unitemized
 col_a_individual_contribution_total,32,11(a)iii Total,26,11(a)iii Total,26,11(a)iii Total
@@ -39,7 +39,7 @@ col_a_transfers_from_aff_other_party_cmttees,36,12. Transfers from Affiliated/Ot
 col_a_total_loans,37,13. All Loans Received,31,13. All Loans Received,31,13. All Loans Received
 col_a_total_loan_repayments_received,38,14. Loan Repayments Received,32,14. Loan Repayments Received,32,14. Loan Repayments Received
 col_a_offsets_to_expenditures,39,15. Offsets to Operating Expenditures (refunds),33,15. Offsets to Operating Expenditures (refunds),33,15. Offsets to Operating Expenditures (refunds)
-col_a_total_contributions_refunds,40,16. Refunds of Federal Contributions,34,16. Refunds of Federal Contributions,34,16. Refunds of Federal Contributions
+col_a_refunds_of_contributions_to_federal_candidates,40,16. Refunds of Federal Contributions,34,16. Refunds of Federal Contributions,34,16. Refunds of Federal Contributions
 col_a_other_federal_receipts,41,17. Other Federal Receipts (dividends),35,17. Other Federal Receipts (dividends),35,17. Other Federal Receipts (dividends)
 col_a_transfers_from_nonfederal_h3,42,18(a) Transfers from Nonfederal Account (H3),36,18(a) Transfers from Nonfederal Account (H3),36,18(a) Transfers from Nonfederal Account (H3)
 col_a_levin_funds,43,18(b) Transfers from Non-Federal (Levin - H5),108,18(b) Transfers from Non-Federal (Levin - H5),,
@@ -75,9 +75,9 @@ col_a_total_offset_to_operating_expenditures,72,37. Offsets to Operating Expendi
 col_a_net_operating_expenditures,73,38. Net Operating Expenditures,61,38. Net Operating Expenditures,61,37. Net Operating Expenditures
 col_b_cash_on_hand_jan_1,74, 6(a) Cash on Hand Jan 1,62, 6(a) Cash on Hand Jan 1,62, 6(a) Cash on Hand Jan 1
 col_b_year,75,Year for Above,63,Year for Above,63,Year for Above
-col_b_total_receipts,76,6(c) Total Receipts,64,6(c) Total Receipts,64,6(c) Total Receipts
-col_b_subtotal,77,6(d) Subtotal,65,6(d) Subtotal,65,6(d) Subtotal
-col_b_total_disbursements,78,7. Total disbursements,66,7. Total disbursements,66,7. Total disbursements
+col_b_total_receipts_summary,76,6(c) Total Receipts,64,6(c) Total Receipts,64,6(c) Total Receipts
+col_b_subtotal_summary,77,6(d) Subtotal,65,6(d) Subtotal,65,6(d) Subtotal
+col_b_total_disbursements_summary,78,7. Total disbursements,66,7. Total disbursements,66,7. Total disbursements
 col_b_cash_on_hand_close_of_period,79,8. Cash on Hand Close,67,8. Cash on Hand Close,67,8. Cash on Hand Close
 col_b_individuals_itemized,80,11(a)i  Itemized,68,11(a)i Itemized,68,11(a)i Itemized
 col_b_individuals_unitemized,81,11(a)ii  Unitemized,69,11(a)ii Unitemized,69,11(a)ii Unitemized
@@ -89,7 +89,7 @@ col_b_transfers_from_aff_other_party_cmttees,86,12. Transfers from Affiliated/Ot
 col_b_total_loans,87,13. All Loans Received,75,13. All Loans Received,75,13. All Loans Received
 col_b_total_loan_repayments_received,88,14. Loan Repayments Received,76,14. Loan Repayments Received,76,14. Loan Repayments Received
 col_b_offsets_to_expenditures,89,15. Offsets to Operating Expenditures (refunds),77,15. Offsets to Operating Expenditures (refunds),77,15. Offsets to Operating Expenditures (refunds)
-col_b_total_contributions_refunds,90,16. Refunds of Federal Contributions,78,16. Refunds of Federal Contributions,78,16. Refunds of Federal Contributions
+col_b_refunds_of_contributions_to_federal_candidates,90,16. Refunds of Federal Contributions,78,16. Refunds of Federal Contributions,78,16. Refunds of Federal Contributions
 col_b_other_federal_receipts,91,17. Other Federal Receipts (dividends),79,17. Other Federal Receipts (dividends),79,17. Other Federal Receipts (dividends)
 col_b_transfers_from_nonfederal_h3,92,18(a) Transfers from Nonfederal Account (H3),80,18(a) Transfers from Nonfederal Account (H3),80,18(a) Transfers from Nonfederal Account (H3)
 col_b_levin_funds,93,18(b) Transfers from Non-Federal (Levin - H5),114,18(b) Transfers from Non-Federal (Levin - H5),,
