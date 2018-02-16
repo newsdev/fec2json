@@ -16,7 +16,7 @@ FEC_SOURCES = {}
 PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
 CSV_FILE_DIRECTORY = '{}/fec-csv-sources'.format(PROJECT_ROOT)
 
-def process_electronic_filing(path, filing_id):
+def process_electronic_filing(path):
     filing_dict = {}
     with open(path, 'r') as f:
         reader = csv.reader(f)
@@ -52,7 +52,6 @@ def process_electronic_filing(path, filing_id):
             if not itemization:
                 print('itemization failed, skipping')
                 continue
-            itemization['filing_id'] = filing_id
             filing_dict['itemizations'][form_type].append(itemization)
 
 
