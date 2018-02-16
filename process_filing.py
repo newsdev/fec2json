@@ -141,7 +141,7 @@ def process_line(line, fec_version_number, form_type):
     processed_fields = {}
     for k, v in header_dict.items():
         try:
-            processed_fields[k] = line[v-1]
+            processed_fields[k] = line[v-1] or None #turns blanks into nones
         except IndexError:
             print(header_dict)
             print(line)
