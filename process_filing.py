@@ -41,7 +41,8 @@ def process_electronic_filing(path):
         processed_summary = process_summary_row(summary_row, fec_version_number)
         assert processed_summary, "Summary could not be processed"
         filing_dict.update(processed_summary)
-        
+        filing_id = filing_dict['filing_id']
+
         filing_dict['itemizations'] = {}
         for line in reader:
             form_type = get_itemization_type(line[0])
@@ -52,6 +53,7 @@ def process_electronic_filing(path):
             if not itemization:
                 print('itemization failed, skipping')
                 continue
+            itemization['filing_id'] = filing_id
             filing_dict['itemizations'][form_type].append(itemization)
 
 
@@ -74,11 +76,11 @@ def process_summary_row(summary_row, fec_version_number):
 
         return(processed_fields)
 
-def process_itemization_line(line, fec_version_number):
+def process_itemization_line(line, fec_version_number, filing_id):
     #processes a single itemization row
     form_type = get_itemization_type(line[0])
     return process_line(line, fec_version_number, form_type)
-
+    
 
 def get_header_columns(fec_version_number, form_type):
     #if we haven't seen this form before, pull the correct version out of fec sources
