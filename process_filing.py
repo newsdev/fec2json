@@ -13,7 +13,7 @@ over and over, we'll cache the ones we've already loaded
 in the FEC_SOURCES global
 """
 FEC_SOURCES = {}
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
 CSV_FILE_DIRECTORY = '{}/fec-csv-sources'.format(PROJECT_ROOT)
 
 def process_electronic_filing(path):
