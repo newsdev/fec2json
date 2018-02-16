@@ -91,7 +91,7 @@ def get_header_columns(fec_version_number, form_type):
     try:
         f = open('{}/{}.csv'.format(CSV_FILE_DIRECTORY, form_type), 'r')
     except FileNotFoundError:
-        print('could not find headers for form type {}'.format(form_type))
+        print('could not find headers for form type {} in {}'.format(form_type, CSV_FILE_DIRECTORY))
         raise
 
     csv_headers = csv.reader(f)
