@@ -16,7 +16,7 @@ FEC_SOURCES = {}
 PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
 CSV_FILE_DIRECTORY = '{}/fec-csv-sources'.format(PROJECT_ROOT)
 
-def process_electronic_filing(path):
+def process_electronic_filing(path, filing_id):
     filing_dict = {}
     with open(path, 'r') as f:
         reader = csv.reader(f)
@@ -41,7 +41,6 @@ def process_electronic_filing(path):
         processed_summary = process_summary_row(summary_row, fec_version_number)
         assert processed_summary, "Summary could not be processed"
         filing_dict.update(processed_summary)
-        filing_id = filing_dict['filing_id']
 
         filing_dict['itemizations'] = {}
         for line in reader:
