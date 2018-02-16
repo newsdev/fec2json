@@ -156,6 +156,8 @@ def get_itemization_type(line_type):
         return "SchC1"
     if line_type.startswith('SC2'):
         return "SchC2"
+    if line_type.startswith('H'):
+        return line_type
     return "Sch"+line_type[1]#this is probably going to need to be more complex
 
 def write_file(outpath, content):
