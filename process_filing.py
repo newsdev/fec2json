@@ -1,6 +1,8 @@
 import csv
+import sys
 import ujson as json
 import datetime
+import argparse
 
 """
 this will be a dictionary of the sources we've loaded.
@@ -157,6 +159,20 @@ def write_file(outpath, content):
     #eventually we'll probably want to make this write to S3 or google
     with open(outpath, 'w') as f:
         f.write(json.dumps(content, indent=2))
+
+def main():
+    #do some argparse stuff
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--path', help='path to the fec file we want to load')
+    parser.add_argument('--fecfile', action='store_true', default=False, help='indicates we\'re using a .fec file instead of the fec\'s .csv file. .csv is default and recommended for messy whitespace reasons')
+    args = parser.parse_args()
+
+    assert not args.fecfile, "parsing for .fec file not yet implemented, use .csv file"
+    content = process_electronic_filing(args.path)
+    sys.stdout.write(json.dumps(content))
+
+if __name__=='__main__':
+    main()
 
 """
 start_time = datetime.datetime.now()
