@@ -24,18 +24,14 @@ def process_electronic_filing(path):
         fec_version_number = fec_header[2].strip()
 
         #these fields come from the first row of the fec file
-        filing_dict['record_type'] = fec_header[0]
-        filing_dict['electronic_filing_type'] = fec_header[1]
-        filing_dict['fec_version_number'] = fec_header[2]
-        filing_dict['software_name'] = fec_header[3]
-        filing_dict['software_version'] = fec_header[4]
-        filing_dict['report_id'] = fec_header[5]
-        filing_dict['report_type'] = fec_header[6]
-        try:
-            filing_dict['header_comment'] = fec_header[7]
-        except IndexError:
-            filing_dict['header_comment'] = None
-            print("this filing doesn't have a header comment")
+        filing_dict['record_type'] = list_get(fec_header, 0)
+        filing_dict['electronic_filing_type'] = list_get(fec_header, 1)
+        filing_dict['fec_version_number'] = list_get(fec_header, 2)
+        filing_dict['software_name'] = list_get(fec_header, 3)
+        filing_dict['software_version'] = list_get(fec_header, 4)
+        filing_dict['report_id'] = list_get(fec_header, 5)
+        filing_dict['report_type'] = list_get(fec_header, 6)
+        filing_dict['header_comment'] = list_get(fec_header, 7)
         
         summary_row = next(reader)
         processed_summary = process_summary_row(summary_row, fec_version_number)
@@ -143,7 +139,7 @@ def process_line(line, fec_version_number, form_type):
     processed_fields = {}
     for k, v in header_dict.items():
         try:
-            processed_fields[k] = line[v-1] or None #turns blanks into nones
+            processed_fields[k] = list_get(line, v-1) or None #turns blanks into nones
         except IndexError:
             print(header_dict)
             print(line)
@@ -165,6 +161,14 @@ def get_itemization_type(line_type):
     if line_type.startswith('H'):
         return line_type
     return "Sch"+line_type[1]
+
+def list_get(l, index, default=None):
+    #like dict.get, but for a list - returns the item or a default other thing if it doesn't exist
+    try:
+        return l[index]
+    except IndexError:
+        return default
+
 
 def write_file(outpath, content):
     #eventually we'll probably want to make this write to S3 or google
