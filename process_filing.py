@@ -21,7 +21,7 @@ def process_electronic_filing(path):
     with open(path, 'r') as f:
         reader = csv.reader(f)
         fec_header = next(reader)
-        fec_version_number = fec_header[2]
+        fec_version_number = fec_header[2].strip()
 
         #these fields come from the first row of the fec file
         filing_dict['record_type'] = fec_header[0]
