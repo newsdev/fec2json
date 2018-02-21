@@ -162,12 +162,9 @@ def get_itemization_type(line_type):
         return line_type
     return "Sch"+line_type[1]
 
-def list_get(l, index, default=None):
+def list_get(l, i, default=None):
     #like dict.get, but for a list - returns the item or a default other thing if it doesn't exist
-    try:
-        return l[index]
-    except IndexError:
-        return default
+    return l[i] if i < len(l) else default
 
 
 def write_file(outpath, content):
