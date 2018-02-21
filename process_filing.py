@@ -44,15 +44,18 @@ def process_electronic_filing(path):
 
         filing_dict['itemizations'] = {}
         for line in reader:
-            form_type = get_itemization_type(line[0])
-            #print(form_type)
-            if form_type not in filing_dict['itemizations']:
-                filing_dict['itemizations'][form_type] = []
-            itemization = process_itemization_line(line, fec_version_number)
-            if not itemization:
-                print('itemization failed, skipping')
-                continue
-            filing_dict['itemizations'][form_type].append(itemization)
+            if line:
+                form_type = get_itemization_type(line[0])
+                if not form_type:
+                    print('bad itemization line')
+                    continue
+                if form_type not in filing_dict['itemizations']:
+                    filing_dict['itemizations'][form_type] = []
+                itemization = process_itemization_line(line, fec_version_number)
+                if not itemization:
+                    print('itemization failed, skipping')
+                    continue
+                filing_dict['itemizations'][form_type].append(itemization)
 
 
         return filing_dict
@@ -77,8 +80,9 @@ def process_summary_row(summary_row, fec_version_number):
 def process_itemization_line(line, fec_version_number):
     #processes a single itemization row
     form_type = get_itemization_type(line[0])
-    return process_line(line, fec_version_number, form_type)
-    
+    if form_type:
+        return process_line(line, fec_version_number, form_type)
+    return None
 
 def get_header_columns(fec_version_number, form_type):
     #if we haven't seen this form before, pull the correct version out of fec sources
@@ -147,6 +151,8 @@ def process_line(line, fec_version_number, form_type):
     return(processed_fields)
 
 def get_itemization_type(line_type):
+    if not line_type:
+        return None
     #figure out the itemization type based on the FEC description of the line
     if line_type == "TEXT":
         return "TEXT"
@@ -158,7 +164,7 @@ def get_itemization_type(line_type):
         return "SchC2"
     if line_type.startswith('H'):
         return line_type
-    return "Sch"+line_type[1]#this is probably going to need to be more complex
+    return "Sch"+line_type[1]
 
 def write_file(outpath, content):
     #eventually we'll probably want to make this write to S3 or google
