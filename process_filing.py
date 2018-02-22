@@ -38,6 +38,11 @@ def process_electronic_filing(path):
         assert processed_summary, "Summary could not be processed"
         filing_dict.update(processed_summary)
 
+        if filing_dict['amendment']:
+            filing_dict['amends_filing'] = filing_dict['report_id'].replace('FEC-', '')
+        else:
+            filing_dict['amends_filing'] = None
+
         filing_dict['itemizations'] = {}
         for line in reader:
             if line:
@@ -61,16 +66,15 @@ def process_summary_row(summary_row, fec_version_number):
     form_type = summary_row[0]
     if form_type.endswith('N'):
         amendment = False
-        form_type = form_type.rstrip('N')
+        form = form_type.rstrip('N')
     elif form_type.endswith('A'):
         amendment = True
-        form_type = form_type.rstrip('A')
+        form = form_type.rstrip('A')
 
-    processed_fields = process_line(summary_row, fec_version_number, form_type)
+    processed_fields = process_line(summary_row, fec_version_number, form)
     if processed_fields:
         processed_fields['amendment'] = amendment
-        processed_fields['form'] = form_type #this has the N or A removed
-
+        processed_fields['form'] = form
         return(processed_fields)
 
 def process_itemization_line(line, fec_version_number):
