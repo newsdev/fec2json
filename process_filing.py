@@ -56,6 +56,8 @@ def process_electronic_filing(path):
                 if not itemization:
                     print('itemization failed, skipping')
                     continue
+
+                itemization['filer_id'] = filing_dict['filer_committee_id_number']
                 filing_dict['itemizations'][form_type].append(itemization)
 
 
