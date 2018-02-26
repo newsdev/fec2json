@@ -16,7 +16,7 @@ FEC_SOURCES = {}
 PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
 CSV_FILE_DIRECTORY = '{}/fec-csv-sources'.format(PROJECT_ROOT)
 
-def process_electronic_filing(path):
+def process_electronic_filing(path, filing_id=None):
     filing_dict = {}
     with open(path, 'r') as f:
         reader = csv.reader(f)
@@ -57,7 +57,13 @@ def process_electronic_filing(path):
                     print('itemization failed, skipping')
                     continue
 
-                itemization['filer_id'] = filing_dict['filer_committee_id_number']
+                if not filing_id:
+                    try:
+                        filing_id = path.strip('/').split('/')[-1].split('.')[0]
+                    except:
+                        filing_id = None
+                        
+                itemization['filing_id'] = filing_id
                 filing_dict['itemizations'][form_type].append(itemization)
 
 
@@ -183,10 +189,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--path', help='path to the fec file we want to load')
     parser.add_argument('--fecfile', action='store_true', default=False, help='indicates we\'re using a .fec file instead of the fec\'s .csv file. .csv is default and recommended for messy whitespace reasons')
+    parser.add_argument('--filing_id', help='if not available, assume that filing id is the filename minus the extension.')
     args = parser.parse_args()
 
     assert not args.fecfile, "parsing for .fec file not yet implemented, use .csv file"
-    content = process_electronic_filing(args.path)
+    content = process_electronic_filing(args.path, args.filing_id)
     sys.stdout.write(json.dumps(content))
 
 if __name__=='__main__':

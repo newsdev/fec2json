@@ -6,6 +6,16 @@ work in progress, not yet trustworthy
 
 The purpose of this library is to turn files from the fec format into json.
 
+## Running
+Requires python3.x. To install dependencies, `pip install -r requirements.txt`. We recommend you do that in a virtual enviromnet.
+
+### CLI:
+`fec2json --path path/to/filing`
+Takes the following optional commandline arguments
+* `--fecfile` if you have .fec files instead of .csv files (no argument needed, this stores a boolean, we assume it's csv if not specified)
+* `--filing_id` to specify the filing id. If not specified, we assume it is the filename minus the directory path and extension.
+
+
 The json will have the following keys:
 
 #### from the first line of the fec file:
@@ -17,15 +27,18 @@ The json will have the following keys:
 * report_id
 * report_type
 * header_comment
+* amends_filing (pulled from report_id)
 
 #### from the second line of the fec file
 * amendment (whether the file is amended)
 * form (the form type minus the `N` or `A`)
 * remaining fields depend on the form type and come from the relevant [fec csv source file](https://github.com/newsdev/fec-csv-sources)
 
+
 #### from the itemizations
 * itemizations, an object which includes keys for each sked type
   * each of those keys points to a list of itemization objects of the relevant type. The keys for those innermost objects are determined by the relevant [fec csv source file](https://github.com/newsdev/fec-csv-sources)
+  * each itemization also includes filing_id of the filing. The filing ID. The filing ID can be provided as a command line argument when running in command line mode. If it is not provided, we assume the filing's path is of the format `path/to/filing/filing_id.ext`.
 
 For example, a filing might look like this:
 
