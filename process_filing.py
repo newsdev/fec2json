@@ -18,7 +18,7 @@ CSV_FILE_DIRECTORY = '{}/fec-csv-sources'.format(PROJECT_ROOT)
 
 def process_electronic_filing(path, filing_id=None):
     filing_dict = {}
-    with open(path, 'r') as f:
+    with open(path, 'r', errors='replace') as f:
         reader = csv.reader(f)
         fec_header = next(reader)
         fec_version_number = fec_header[2].strip()
