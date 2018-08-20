@@ -172,6 +172,8 @@ def get_itemization_type(line_type):
         return "SchC2"
     if line_type.startswith('H'):
         return line_type
+    if line_type.startswith('F'):
+        return line_type
     return "Sch"+line_type[1]
 
 def list_get(l, i, default=None):
