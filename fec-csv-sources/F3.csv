@@ -80,9 +80,9 @@ col_b_net_contributions_summary,65,(6c) Net Contributions,72,(6c) Net Contributi
 col_b_total_operating_expenditures_summary,66,(7a) Total Operating Expenditures,73,(7a) Total Operating Expenditures,64,(7a) Total Operating Expenditures,64,(7a) Total Operating Expenditures
 col_b_total_offset_to_operating_expenditures_summary,67,(7b) Total Offsets to Operating Expenditures,74,(7b) Total Offsets to Operating Expenditures,65,(7b) Total Offsets to Operating Expenditures,65,(7b) Total Offsets to Operating Expenditures
 col_b_net_operating_expenditures_summary,68,(7c) NET Operating Expenditures.,75,(7c) NET Operating Expenditures.,66,(7c) NET Operating Expenditures.,66,(7c) NET Operating Expenditures.
-col_b_individual_contributions_itemized,69,11(a i.) Individuals Itemized,76,11(a i.) Individuals Itemized,67,11(a.i) Individuals Itemized,67,11(a.i) Individuals Itemized
-col_b_individual_contributions_unitemized,70,11(a.ii) Individuals Unitemized,77,11(a.ii) Individuals Unitemized,68,11(a.ii) Individuals Unitemized,68,11(a.ii) Individuals Unitemized
-col_b_total_individual_contributions,71,11(a.iii) Individuals Total,78,11(a.iii) Individuals Total,69,11(a.iii) Individuals Total,69,11(a.iii) Individuals Total
+col_b_individuals_itemized,69,11(a i.) Individuals Itemized,76,11(a i.) Individuals Itemized,67,11(a.i) Individuals Itemized,67,11(a.i) Individuals Itemized
+col_b_individuals_unitemized,70,11(a.ii) Individuals Unitemized,77,11(a.ii) Individuals Unitemized,68,11(a.ii) Individuals Unitemized,68,11(a.ii) Individuals Unitemized
+col_b_individual_contribution_total,71,11(a.iii) Individuals Total,78,11(a.iii) Individuals Total,69,11(a.iii) Individuals Total,69,11(a.iii) Individuals Total
 col_b_political_party_contributions,72,11(b) Political Party Committees,79,11(b) Political Party Committees,70,11(b) Political Party Committees,70,11(b) Political Party Committees
 col_b_pac_contributions,73,11(c) All Other Political Committees (PACS),80,11(c) All Other Political Committees (PACS),71,11(c) All Other Political Committees (PACS),71,11(c) All Other Political Committees (PACS)
 col_b_candidate_contributions,74,11(d) The Candidate,81,11(d) The Candidate,72,11(d) The Candidate,72,11(d) The Candidate
