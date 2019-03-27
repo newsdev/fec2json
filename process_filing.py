@@ -52,7 +52,6 @@ def process_electronic_filing(path, filing_id=None, dump_full=True):
         if dump_full:
             filing_dict['itemizations'] = {}
             for itemization in itemizations:
-                print(itemization)
                 form_type = get_itemization_type(itemization.get('form_type'))
                 if not form_type:
                     form_type = get_itemization_type(itemization.get('rec_type'))
