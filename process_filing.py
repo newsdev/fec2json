@@ -16,7 +16,10 @@ FEC_SOURCES = {}
 PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
 CSV_FILE_DIRECTORY = '{}/fec-csv-sources'.format(PROJECT_ROOT)
 
-def process_electronic_filing(path, filing_id=None):
+def process_electronic_filing(path, filing_id=None, dump_full=True):
+    #if dump_full is true, you'll get the whole filing, and "itemizations"
+    #will include all itemizations grouped by category
+    #otherwise "itemizations" will be in iterator
     filing_dict = {}
     with open(path, 'r', errors='replace') as f:
         reader = csv.reader(f)
@@ -43,15 +46,32 @@ def process_electronic_filing(path, filing_id=None):
         else:
             filing_dict['amends_filing'] = None
 
-        filing_dict['itemizations'] = {}
+        
+        
+        itemizations = itemization_iterator(path, filing_id, fec_version_number)
+        if dump_full:
+            filing_dict['itemizations'] = {}
+            for itemization in itemization_iterator:
+                form_type = get_itemization_type(itemization['form_type'])
+                if form_type not in filing_dict['itemizations']:
+                    filing_dict['itemizations'][form_type] = []
+                filing_dict['itemizations'][form_type].append(itemization)
+        else:
+            filing_type['itemizations'] = itemizations
+
+        return filing_dict
+
+def itemization_iterator(path, filing_id, fec_version_number):
+    with open(path, 'r', errors='replace') as f:
+        reader = csv.reader(f)
+        fec_header = next(reader)
+        summary_row = next(reader)
         for line in reader:
             if line:
                 form_type = get_itemization_type(line[0])
                 if not form_type:
                     print('bad itemization line')
                     continue
-                if form_type not in filing_dict['itemizations']:
-                    filing_dict['itemizations'][form_type] = []
                 itemization = process_itemization_line(line, fec_version_number)
                 if not itemization:
                     print('itemization failed, skipping')
@@ -62,12 +82,8 @@ def process_electronic_filing(path, filing_id=None):
                         filing_id = path.strip('/').split('/')[-1].split('.')[0]
                     except:
                         filing_id = None
-                        
-                itemization['filing_id'] = filing_id
-                filing_dict['itemizations'][form_type].append(itemization)
-
-
-        return filing_dict
+            itemization['filing_id'] = filing_id
+            yield itemization
 
 def process_summary_row(summary_row, fec_version_number):
     #processes the second row of the filing, which is the form summary/topline row
