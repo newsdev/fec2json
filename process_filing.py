@@ -55,7 +55,9 @@ def process_electronic_filing(path, filing_id=None, dump_full=True):
                 print(itemization)
                 form_type = get_itemization_type(itemization.get('form_type'))
                 if not form_type:
-                    continue
+                    form_type = get_itemization_type(itemization.get('rec_type'))
+                    if not form_type:
+                        continue
                 if form_type not in filing_dict['itemizations']:
                     filing_dict['itemizations'][form_type] = []
                 filing_dict['itemizations'][form_type].append(itemization)
