@@ -61,7 +61,7 @@ def process_electronic_filing(path, filing_id=None, dump_full=True):
                     filing_dict['itemizations'][form_type] = []
                 filing_dict['itemizations'][form_type].append(itemization)
         else:
-            filing_type['itemizations'] = itemizations
+            filing_dict['itemizations'] = itemizations
 
         return filing_dict
 
