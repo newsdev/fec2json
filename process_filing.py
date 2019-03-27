@@ -51,7 +51,7 @@ def process_electronic_filing(path, filing_id=None, dump_full=True):
         itemizations = itemization_iterator(path, filing_id, fec_version_number)
         if dump_full:
             filing_dict['itemizations'] = {}
-            for itemization in itemization_iterator:
+            for itemization in itemizations:
                 form_type = get_itemization_type(itemization['form_type'])
                 if form_type not in filing_dict['itemizations']:
                     filing_dict['itemizations'][form_type] = []
