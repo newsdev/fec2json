@@ -40,6 +40,7 @@ def process_electronic_filing(path, filing_id=None, dump_full=True, fec_file=Fal
         filing_dict['header_comment'] = list_get(fec_header, 7)
         
         summary_row = next(reader)
+
         processed_summary = process_summary_row(summary_row, fec_version_number)
         assert processed_summary, "Summary could not be processed"
         filing_dict.update(processed_summary)
@@ -75,7 +76,16 @@ def itemization_iterator(path, filing_id, fec_version_number, fec_file=False):
             reader = csv.reader(f)
         fec_header = next(reader)
         summary_row = next(reader)
-        for line in reader:
+
+        while True:
+            try:
+                line = next(reader)
+            except StopIteration:
+                print("reached end of file")
+                break
+            except:
+                print('bad line')
+                continue
             if line:
                 form_type = get_itemization_type(line[0])
                 if not form_type:
@@ -131,7 +141,7 @@ def get_header_columns(fec_version_number, form_type):
         print('could not find headers for form type {} in {}'.format(form_type, CSV_FILE_DIRECTORY))
         raise
 
-    reader = csv.reader(f)
+    csv_headers = csv.reader(f)
     versions = next(csv_headers) #this top row lists the fec software versions
     i = 0
     while i < len(versions):
@@ -221,8 +231,10 @@ def main():
 
     if args.fecfile:
         fec_file=True
+        print("processing as .fec file")
     else:
         fec_file=False
+        print('processing as .csv file')
     content = process_electronic_filing(args.path, args.filing_id, fec_file=fec_file)
     sys.stdout.write(json.dumps(content))
 
