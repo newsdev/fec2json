@@ -16,13 +16,16 @@ FEC_SOURCES = {}
 PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
 CSV_FILE_DIRECTORY = '{}/fec-csv-sources'.format(PROJECT_ROOT)
 
-def process_electronic_filing(path, filing_id=None, dump_full=True):
+def process_electronic_filing(path, filing_id=None, dump_full=True, fec_file=False):
     #if dump_full is true, you'll get the whole filing, and "itemizations"
     #will include all itemizations grouped by category
     #otherwise "itemizations" will be in iterator
     filing_dict = {}
     with open(path, 'r', errors='replace') as f:
-        reader = csv.reader(f)
+        if fec_file:
+            reader = csv.reader(f, delimiter='')
+        else:
+            reader = csv.reader(f)
         fec_header = next(reader)
         fec_version_number = fec_header[2].strip()
 
@@ -37,6 +40,7 @@ def process_electronic_filing(path, filing_id=None, dump_full=True):
         filing_dict['header_comment'] = list_get(fec_header, 7)
         
         summary_row = next(reader)
+
         processed_summary = process_summary_row(summary_row, fec_version_number)
         assert processed_summary, "Summary could not be processed"
         filing_dict.update(processed_summary)
@@ -47,8 +51,7 @@ def process_electronic_filing(path, filing_id=None, dump_full=True):
             filing_dict['amends_filing'] = None
 
         
-        
-        itemizations = itemization_iterator(path, filing_id, fec_version_number)
+        itemizations = itemization_iterator(path, filing_id, fec_version_number, fec_file=fec_file)
         if dump_full:
             filing_dict['itemizations'] = {}
             for itemization in itemizations:
@@ -65,12 +68,24 @@ def process_electronic_filing(path, filing_id=None, dump_full=True):
 
         return filing_dict
 
-def itemization_iterator(path, filing_id, fec_version_number):
+def itemization_iterator(path, filing_id, fec_version_number, fec_file=False):
     with open(path, 'r', errors='replace') as f:
-        reader = csv.reader(f)
+        if fec_file:
+            reader = csv.reader(f, delimiter='')
+        else:
+            reader = csv.reader(f)
         fec_header = next(reader)
         summary_row = next(reader)
-        for line in reader:
+
+        while True:
+            try:
+                line = next(reader)
+            except StopIteration:
+                print("reached end of file")
+                break
+            except:
+                print('bad line')
+                continue
             if line:
                 form_type = get_itemization_type(line[0])
                 if not form_type:
@@ -86,8 +101,8 @@ def itemization_iterator(path, filing_id, fec_version_number):
                         filing_id = path.strip('/').split('/')[-1].split('.')[0]
                     except:
                         filing_id = None
-            itemization['filing_id'] = filing_id
-            yield itemization
+                itemization['filing_id'] = filing_id
+                yield itemization
 
 def process_summary_row(summary_row, fec_version_number):
     #processes the second row of the filing, which is the form summary/topline row
@@ -214,8 +229,13 @@ def main():
     parser.add_argument('--filing_id', help='if not available, assume that filing id is the filename minus the extension.')
     args = parser.parse_args()
 
-    assert not args.fecfile, "parsing for .fec file not yet implemented, use .csv file"
-    content = process_electronic_filing(args.path, args.filing_id)
+    if args.fecfile:
+        fec_file=True
+        print("processing as .fec file")
+    else:
+        fec_file=False
+        print('processing as .csv file')
+    content = process_electronic_filing(args.path, args.filing_id, fec_file=fec_file)
     sys.stdout.write(json.dumps(content))
 
 if __name__=='__main__':
